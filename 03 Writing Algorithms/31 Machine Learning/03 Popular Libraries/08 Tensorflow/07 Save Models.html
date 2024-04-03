@@ -16,7 +16,7 @@ json_weights = json5.dumps(weights)</pre>
 
     <li>Save the graph and weights to the Object Store.</li>
     <div class="section-example-container">
-        <pre class="python">self.ObjectStore.Save('graph', json_graph)
-self.ObjectStore.Save('weights', json_weights)</pre>
+        <pre class="python">self.object_store.save('graph', json_graph)
+self.object_store.save('weights', json_weights)</pre>
     </div>
 </ol>

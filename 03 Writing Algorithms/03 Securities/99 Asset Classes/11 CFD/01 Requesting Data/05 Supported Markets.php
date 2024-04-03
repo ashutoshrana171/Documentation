@@ -4,8 +4,8 @@
     <pre class="csharp">_symbol = AddCfd("XAUUSD", market: Market.Oanda).Symbol;
 _ibkrSymbol = AddCfd("IBGB100", market: Market.InteractiveBrokers).Symbol;   // Unavailable in backtesting
     </pre>
-    <pre class="python">self.symbol = self.AddCfd("XAUUSD", market=Market.Oanda).Symbol
-self.ibkr_symbol = self.AddCfd("IBGB100", market=Market.InteractiveBrokers).Symbol   # Unavailable in backtesting
+    <pre class="python">self.symbol = self.add_cfd("XAUUSD", market=Market.oanda).symbol
+self.ibkr_symbol = self.add_cfd("IBGB100", market=Market.interactive_brokers).symbol   # Unavailable in backtesting
     </pre>
 </div>
 

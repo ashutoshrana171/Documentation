@@ -38,12 +38,12 @@
     Universe     # Universe helper
 
     # Set up Requested Data, Cash, Time Period.
-    def Initialize(self) -&gt; None:
+    def initialize(self) -&gt; None:
 
     # Other Event Handlers
-    def OnData(self, slice: Slice) -&gt; None:
-    def OnEndOfDay(self, symbol: Symbol) -&gt; None:
-    def OnEndOfAlgorithm(self) -&gt; None:
+    def on_data(self, slice: Slice) -&gt; None:
+    def on_end_of_day(self, symbol: Symbol) -&gt; None:
+    def on_end_of_algorithm(self) -&gt; None:
 
     # Indicator Helpers
     def SMA(self, symbol: Symbol, period: int) -&gt; SimpleMovingAverage:</pre>

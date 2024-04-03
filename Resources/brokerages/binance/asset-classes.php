@@ -5,8 +5,8 @@
     <pre class="csharp">AddCrypto("BTCUSDT", Resolution.Minute, Market.Binance);
 AddCryptoFuture("BTCUSD", Resolution.Minute, Market.Binance);
 AddCrypto("BTCUSDT", Resolution.Minute, Market.BinanceUS);</pre>
-    <pre class="python">self.AddCrypto("BTCUSDT", Resolution.Minute, Market.Binance)
-self.AddCryptoFuture("BTCUSD", Resolution.Minute, Market.Binance)</pre>
+    <pre class="python">self.add_crypto("BTCUSDT", Resolution.minute, Market.binance)
+self.add_crypto_future("BTCUSD", Resolution.minute, Market.binance)</pre>
 </div>
 <?php } ?>
 
@@ -15,6 +15,6 @@ self.AddCryptoFuture("BTCUSD", Resolution.Minute, Market.Binance)</pre>
 <?php if ($cloudPlatform) { ?>
 <div class="section-example-container">
     <pre class="csharp">AddCrypto("BTCUSDT", Resolution.Minute, Market.BinanceUS);</pre>
-    <pre class="python">self.AddCrypto("BTCUSDT", Resolution.Minute, Market.BinanceUS)</pre>
+    <pre class="python">self.add_crypto("BTCUSDT", Resolution.minute, Market.binance_us)</pre>
 </div>
 <?php } ?>

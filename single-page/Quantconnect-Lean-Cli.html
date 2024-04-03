@@ -2502,15 +2502,15 @@ from QuantConnect.Python import PythonData
 
 
 class Weather(PythonData):
-    def GetSource(self, config: SubscriptionDataConfig, date: datetime, is_live: bool) -&gt; SubscriptionDataSource:
+    def get_source(self, config: SubscriptionDataConfig, date: datetime, is_live: bool) -&gt; SubscriptionDataSource:
         # Old:
         # source = "https://www.dropbox.com/s/8v6z949n25hyk9o/custom_weather_data.csv?dl=1"
-        # return SubscriptionDataSource(source, SubscriptionTransportMedium.RemoteFile)
+        # return SubscriptionDataSource(source, SubscriptionTransportMedium.remote_file)
 
         # New:
         # Replace custom_weather_data.csv with the path to your data file in the data directory
-        source = os.path.join(Globals.DataFolder, "custom_weather_data.csv")
-        return SubscriptionDataSource(source, SubscriptionTransportMedium.LocalFile)</pre>
+        source = os.path.join(Globals.data_folder, "custom_weather_data.csv")
+        return SubscriptionDataSource(source, SubscriptionTransportMedium.local_file)</pre>
     </div>
    </li>
    <li>
@@ -3295,11 +3295,11 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class USEquityDataAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.UniverseSettings.Asynchronous = True
-        self.AddUniverse(self.Universe.DollarVolume.Top(100))</pre>
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.universe_settings.asynchronous = True
+        self.add_universe(self.universe.dollar_volume.top(100))</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm on the Quant Researcher tier:
@@ -3566,12 +3566,12 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class USEquityOptionsDataAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.UniverseSettings.Asynchronous = True
-        underlying = self.AddEquity("GOOG").Symbol
-        self.AddOption(underlying)</pre>
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.universe_settings.asynchronous = True
+        underlying = self.add_equity("GOOG").symbol
+        self.add_option(underlying)</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm on the Quant Researcher tier:
@@ -3814,15 +3814,15 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class CryptoDataAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.UniverseSettings.Asynchronous = True
-        self.AddUniverse(CryptoCoarseFundamentalUniverse(Market.Coinbase, self.UniverseSettings, self.universe_filter))
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.universe_settings.asynchronous = True
+        self.add_universe(CryptoCoarseFundamentalUniverse(Market.coinbase, self.universe_settings, self.universe_filter))
 
     def universe_filter(self, crypto_coarse: List[CryptoCoarseFundamental]) -&gt; List[Symbol]:
-        sorted_by_dollar_volume = sorted(crypto_coarse, key=lambda cf: cf.VolumeInUsd, reverse=True)
-        return [cf.Symbol for cf in sorted_by_dollar_volume[:100]]</pre>
+        sorted_by_dollar_volume = sorted(crypto_coarse, key=lambda cf: cf.volume_in_usd, reverse=True)
+        return [cf.symbol for cf in sorted_by_dollar_volume[:100]]</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm:
@@ -4017,10 +4017,10 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class ForexDataAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.AddForex("USDCAD")</pre>
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.add_forex("USDCAD")</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm:
@@ -4259,14 +4259,14 @@ Continue? [y/N]: y</pre>
 }
 </pre>
    <pre class="python">class USFuturesDataAlgorithm(QCAlgorithm):
-    def Initialize(self):
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        future = self.AddFuture(Futures.Indices.SP500EMini,
-                                dataNormalizationMode = DataNormalizationMode.BackwardsRatio,
-                                dataMappingMode = DataMappingMode.OpenInterest,
+    def initialize(self):
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        future = self.add_future(Futures.indices.sp500_emini,
+                                dataNormalizationMode = DataNormalizationMode.backwards_ratio,
+                                dataMappingMode = DataMappingMode.open_interest,
                                 contractDepthOffset = 0)
-        future.SetFilter(0, 90)</pre>
+        future.set_filter(0, 90)</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm on the Quant Researcher tier:
@@ -4428,10 +4428,10 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class USIndexOptionsDataAlgorithm(QCAlgorithm):
-    def Initialize(self):
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.AddIndexOption("VIX")</pre>
+    def initialize(self):
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.add_index_option("VIX")</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm:
@@ -4593,10 +4593,10 @@ Continue? [y/N]: y</pre>
     }
 }</pre>
    <pre class="python">class CFDDataAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetEndDate(2021, 1, 1)
-        self.AddCfd("XAUUSD")</pre>
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_end_date(2021, 1, 1)
+        self.add_cfd("XAUUSD")</pre>
   </div>
   <p>
    The following table shows the data cost of the preceding algorithm:
@@ -11747,7 +11747,7 @@ Adding Lean CLI library D:\qc\lean-cli\Library\MyLibrary to project D:\qc\lean-c
     <pre class="csharp">var x = new MyLibrary();
 var value = x.Add(1, 2);</pre>
     <pre class="python">x = MyLibrary()
-value = x.Add(1, 2)</pre>
+value = x.add(1, 2)</pre>
    </div>
   </ol>
  </body>
@@ -12465,12 +12465,12 @@ foreach (var item in backtest.Statistics) {
    <pre class="python">project_name = "Python Template"
 backtest_name = "Adaptable Tan Frog"
 
-project = next(p for p in api.ListProjects().Projects if p.Name == project_name)
-partial_backtest = next(b for b in api.ListBacktests(project.ProjectId).Backtests if b.Name == backtest_name)
-backtest = api.ReadBacktest(project.ProjectId, partial_backtest.BacktestId)
+project = next(p for p in api.list_projects().projects if p.name == project_name)
+partial_backtest = next(b for b in api.list_backtests(project.project_id).backtests if b.name == backtest_name)
+backtest = api.read_backtest(project.project_id, partial_backtest.backtest_id)
 
-for key in backtest.Statistics.Keys:
-    print(f"{key}: {backtest.Statistics[key]}")</pre>
+for key in backtest.statistics.keys:
+    print(f"{key}: {backtest.statistics[key]}")</pre>
   </div>
  </body>
 </html>
@@ -13639,7 +13639,7 @@ To enter multiple options, separate them with comma:</pre>
   </p>
   <div class="section-example-container">
    <pre class="csharp">SetBenchmark(x =&gt; 0);</pre>
-   <pre class="python">self.SetBenchmark(lambda x: 0)</pre>
+   <pre class="python">self.set_benchmark(lambda x: 0)</pre>
   </div>
   <li>
    View the result in the
@@ -23072,14 +23072,14 @@ parameters--&amp;gt</pre>
     }
 }</pre>
      <pre class="python">class ParameterizedAlgorithm(QCAlgorithm):
-    def Initialize(self) -&gt; None:
-        self.SetStartDate(2020, 1, 1)
-        self.SetCash(100000)
-        self.AddEquity("SPY")
+    def initialize(self) -&gt; None:
+        self.set_start_date(2020, 1, 1)
+        self.set_cash(100000)
+        self.add_equity("SPY")
 
-        fast_period = self.GetParameter("ema-fast", 10)
-        medium_period = self.GetParameter("ema-medium", 30)
-        slow_period = self.GetParameter("ema-slow", 50)
+        fast_period = self.get_parameter("ema-fast", 10)
+        medium_period = self.get_parameter("ema-medium", 30)
+        slow_period = self.get_parameter("ema-slow", 50)
 
         self._fast = self.EMA("SPY", fast_period)
         self._medium = self.EMA("SPY", medium_period)

@@ -26,7 +26,7 @@
 <ol>
     <li>Create a method to build the model for the algorithm class.</li>
     <div class="section-example-container">
-        <pre class="python">def BuildModel(self):    
+        <pre class="python">def build_model(self):    
     # Instantiate a tensorflow session
     sess = tf.Session()
 
@@ -71,7 +71,7 @@
     
     <li>Instantiate the model, input layers, output layer, and optimizer and then save them as class variables.</li>
     <div class="section-example-container">
-        <pre class="python">self.model, self.X, self.Y, self.output, self.optimizer = self.BuildModel(features, labels)</pre>
+        <pre class="python">self.model, self.X, self.Y, self.output, self.optimizer = self.build_model(features, labels)</pre>
     </div>
     
     <li>Call the <code>run</code> method with the result from the <code>global_variables_initializer</code> method.</li>

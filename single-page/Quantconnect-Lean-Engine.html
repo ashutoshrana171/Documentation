@@ -798,9 +798,9 @@ $ dotnet QuantConnect.Lean.Launcher.dll</pre>
     <pre class="csharp">AddData&lt;Fred&gt;(Fred.LIBOR.OneWeekBasedOnUSD);
 // Instead of
 // AddData&lt;Fred&gt;("USD1WKD156N");</pre>
-    <pre class="python">self.AddData(Fred, Fred.LIBOR.OneWeekBasedOnUSD)
+    <pre class="python">self.add_data(Fred, Fred.LIBOR.one_week_based_on_usd)
 # Instead of
-# self.AddData(Fred, "USD1WKD156N")</pre>
+# self.add_data(Fred, "USD1WKD156N")</pre>
    </div>
    <li>
     Define the
@@ -1575,13 +1575,13 @@ ZVX R735QTJ8XC9X,ZVX,10,15600,156000,False,1,0.666667
   </li>
   <div class="section-example-container">
    <pre class="python">map_file_provider = LocalZipMapFileProvider()
-map_file_provider.Initialize(DefaultDataProvider())<br/></pre>
+map_file_provider.initialize(DefaultDataProvider())<br/></pre>
   </div>
   <li>
    Create a security identifier.
   </li>
   <div class="section-example-container">
-   <pre class="python">sid = SecurityIdentifier.GenerateEquity(point_in_time_ticker,
+   <pre class="python">sid = SecurityIdentifier.generate_equity(point_in_time_ticker,
     Market.USA, True, map_file_provider, csv_date)</pre>
   </div>
   <p>
@@ -2068,13 +2068,13 @@ var mapFileProvider.Initialize(new DefaultDataProvider());</pre>
   </li>
   <div class="section-example-container">
    <pre class="python">map_file_provider = LocalZipMapFileProvider()
-map_file_provider.Initialize(DefaultDataProvider())<br/></pre>
+map_file_provider.initialize(DefaultDataProvider())<br/></pre>
   </div>
   <li>
    Create a security identifier.
   </li>
   <div class="section-example-container">
-   <pre class="python">sid = SecurityIdentifier.GenerateEquity(point_in_time_ticker,
+   <pre class="python">sid = SecurityIdentifier.generate_equity(point_in_time_ticker,
     Market.USA, True, map_file_provider, csv_date)</pre>
   </div>
   <p>

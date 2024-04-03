@@ -25,8 +25,8 @@ sess.close()    # Close the session opened by the `get_json_weights` function</p
 
     <li>Save the graph and weights to the <code>Object Store</code>.</li>
     <div class="section-example-container">
-        <pre class="python">qb.ObjectStore.Save('graph', json_graph)
-qb.ObjectStore.Save('weights', json_weights)</pre>
+        <pre class="python">qb.object_store.save('graph', json_graph)
+qb.object_store.save('weights', json_weights)</pre>
     </div>
 </ol>
 
@@ -36,14 +36,14 @@ qb.ObjectStore.Save('weights', json_weights)</pre>
 <ol>
     <li>Read the model graph and weights from the Object Store.</li>
     <div class="section-example-container">
-        <pre class="python">json_graph = qb.ObjectStore.Read('graph')
-json_weights = qb.ObjectStore.Read('weights')</pre>
+        <pre class="python">json_graph = qb.object_store.read('graph')
+json_weights = qb.object_store.read('weights')</pre>
     </div>
 
     <li>Restore the <code>TensorFlow</code> graph from the JSON object.</li>
     <div class="section-example-container">
         <pre class="python">tf.reset_default_graph()
-graph_definition = json_format.Parse(json_graph, tf.compat.v1.MetaGraphDef())
+graph_definition = json_format.Parse(json_graph, tf.compat.v1.meta_graph_def())
 sess = tf.Session()
 tf.compat.v1.train.import_meta_graph(graph_definition)</pre>
     </div>
